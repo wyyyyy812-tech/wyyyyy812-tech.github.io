@@ -5,7 +5,22 @@ layout: page
 
 ## 簡介
 
-我是 **wy**，目前是高中生。喜歡探索新事物，對法醫科學、領導能力培養有濃厚興趣。
+我是 **wy**，可愛小男娘一枚。啥都不會不要問窩QQ
+
+---
+
+## 基本資料
+
+- **暱稱**：wy
+- **生日**：1/2
+
+---
+
+## 聯絡方式
+
+- **GitHub**：[wyyyyy812-tech](https://github.com/wyyyyy812-tech)
+- **Instagram**：[wyy_yyy12](https://www.instagram.com/wyy_yyy12/)
+- **Discord**：[wy](http://discord.com/users/969803518464626688)
 
 ---
 
@@ -59,19 +74,3 @@ layout: page
 - 校內專題海報製作 — **第三名**
 - 1140310梯次閱讀心得 — **甲等**
 - 國際運算思維挑戰賽 — **全國 PR72**
-
----
-
-## 基本資料
-
-- **暱稱**：wy
-- **生日**：1/2
-
----
-
-## 聯絡方式
-
-- **GitHub**：[wyyyyy812-tech](https://github.com/wyyyyy812-tech)
-- **Instagram**：[wyy_yyy12](https://www.instagram.com/wyy_yyy12/)
-- **Discord**：[wy](http://discord.com/users/969803518464626688)
-- **Email**：（歡迎來信）
