@@ -1,0 +1,54 @@
+<section class="home-welcome" data-aos="fade-up">
+  <div class="welcome-card">
+    <h2><i class="fa-solid fa-hand-sparkles"></i> 歡迎來到我的小窩！</h2>
+    <p>這裡是 <%= config.author %> 的個人部落格，記錄生活、分享技術、珍藏回憶。</p>
+    <div class="welcome-nav">
+      <a href="/archives/" class="welcome-link" data-aos="fade-up" data-aos-delay="100">
+        <i class="fa-solid fa-box-archive"></i>
+        <span>文章歸檔</span>
+        <small>瀏覽所有文章</small>
+      </a>
+      <a href="/about/" class="welcome-link" data-aos="fade-up" data-aos-delay="200">
+        <i class="fa-solid fa-id-card"></i>
+        <span>關於我</span>
+        <small>認識一下我吧</small>
+      </a>
+      <a href="/friends/" class="welcome-link" data-aos="fade-up" data-aos-delay="300">
+        <i class="fa-solid fa-user-group"></i>
+        <span>友情連結</span>
+        <small>我的好朋友們</small>
+      </a>
+    </div>
+  </div>
+</section>
+
+<% if (site.posts.length > 0) { %>
+<section class="recent-posts">
+  <h2 class="section-title">最新文章</h2>
+  <div class="nexmoe-posts">
+    <% site.posts.sort('date', -1).limit(5).forEach(function(post, i) { %>
+    <div class="nexmoe-post" data-aos="fade-up" data-aos-delay="<%= i * 100 %>">
+      <a href="<%- url_for(post.path) %>">
+        <div class="nexmoe-post-cover" style="background: linear-gradient(135deg, <%= ['#667eea,#764ba2','#f093fb,#f5576c','#4facfe,#00f2fe','#43e97b,#38f9d7','#fa709a,#fee140'][i % 5] %>);">
+          <h1><%= post.title %></h1>
+        </div>
+      </a>
+      <div class="nexmoe-post-meta">
+        <span class="meta-item"><i class="fa-solid fa-calendar fa-fw"></i> <%= date(post.date, 'YYYY-MM-DD') %></span>
+        <% if (post.categories && post.categories.length > 0) { %>
+        <span class="meta-item"><i class="fa-solid fa-bookmark fa-fw"></i> <%- post.categories.toArray().map(c => c.name).join(', ') %></span>
+        <% } %>
+      </div>
+      <article><p><%= post.excerpt ? strip_html(post.excerpt).substring(0, 100) + '...' : strip_html(post.content).substring(0, 100) + '...' %></p></article>
+      <% if (post.tags && post.tags.length > 0) { %>
+      <div class="post-tags">
+        <% post.tags.forEach(function(tag) { %>
+        <span class="tag"><a href="<%- url_for(tag.path) %>"><%= tag.name %></a></span>
+        <% }); %>
+      </div>
+      <% } %>
+    </div>
+    <% }); %>
+  </div>
+</section>
+<% } %>

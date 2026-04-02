@@ -1,0 +1,62 @@
+<div id="nexmoe-header">
+  <div class="nexmoe-drawer" id="drawer">
+    <div class="nexmoe-avatar">
+      <a href="/" title="<%= config.author %>">
+        <img src="/images/avatar.jpg" alt="<%= config.author %>"
+             onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect fill=%22%236c5ce7%22 width=%22100%22 height=%22100%22 rx=%2250%22/><text x=%2250%22 y=%2262%22 text-anchor=%22middle%22 fill=%22white%22 font-size=%2236%22 font-family=%22sans-serif%22>W</text></svg>'">
+      </a>
+    </div>
+    <div class="nexmoe-count">
+      <div class="nexmoe-count-item"><span>文章</span><%= site.posts.length %></div>
+      <div class="nexmoe-count-item"><span>標籤</span><%= site.tags.length %></div>
+      <div class="nexmoe-count-item"><span>分類</span><%= site.categories.length %></div>
+    </div>
+    <div class="nexmoe-list">
+      <a class="nexmoe-list-item<%= is_home() ? ' active' : '' %>" href="/" title="首頁">
+        <i class="fa-solid fa-house fa-fw"></i>
+        <div class="item-content">首頁</div>
+      </a>
+      <a class="nexmoe-list-item<%= is_archive() ? ' active' : '' %>" href="/archives/" title="文章歸檔">
+        <i class="fa-solid fa-box-archive fa-fw"></i>
+        <div class="item-content">文章歸檔</div>
+      </a>
+      <a class="nexmoe-list-item<%= is_current('/about/') ? ' active' : '' %>" href="/about/" title="關於我">
+        <i class="fa-solid fa-id-card fa-fw"></i>
+        <div class="item-content">關於我</div>
+      </a>
+      <a class="nexmoe-list-item<%= is_current('/friends/') ? ' active' : '' %>" href="/friends/" title="友情連結">
+        <i class="fa-solid fa-user-group fa-fw"></i>
+        <div class="item-content">友情連結</div>
+      </a>
+    </div>
+
+    <!-- Theme Toggle -->
+    <div class="nexmoe-widget-wrap" style="background: transparent; box-shadow: none;">
+      <div class="nexmoe-widget nexmoe-switch-theme">
+        <div class="theme-toggle-container" onclick="useToggle()">
+          <div class="toggle-background">
+            <div class="clouds"><div class="cloud cloud1"></div><div class="cloud cloud2"></div><div class="cloud cloud3"></div></div>
+            <div class="stars"><div class="star star1"></div><div class="star star2"></div><div class="star star3"></div><div class="star star4"></div><div class="star star5"></div></div>
+          </div>
+          <div class="theme-slider">
+            <svg class="theme-icon sun" width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="5" fill="#ffd700"/><path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22" stroke="#ffd700" stroke-width="2" stroke-linecap="round"/></svg>
+            <svg class="theme-icon moon" width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Social Links -->
+    <div class="nexmoe-widget-wrap">
+      <div class="nexmoe-widget nexmoe-social">
+        <a href="https://github.com/<%= theme.social.github %>" target="_blank" title="GitHub" style="color: #333; background-color: rgba(25,23,23,.15);"><i class="fa-brands fa-github"></i></a>
+        <a href="mailto:<%= theme.social.email %>" target="_blank" title="Email" style="color: rgb(249,8,8); background-color: rgba(249,8,8,.1);"><i class="fa-solid fa-envelope"></i></a>
+      </div>
+    </div>
+
+    <div class="nexmoe-copyright">&copy; <%= date(Date.now(), 'YYYY') %> <%= config.author %></div>
+  </div>
+</div>
+
+<button class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleDrawer()"><i class="fa-solid fa-bars"></i></button>
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleDrawer()"></div>

@@ -1,0 +1,29 @@
+<article class="post-detail" data-aos="fade-up">
+  <div class="post-header">
+    <h1><%= page.title %></h1>
+    <div class="nexmoe-post-meta">
+      <span class="meta-item"><i class="fa-solid fa-calendar fa-fw"></i> <%= date(page.date, 'YYYY-MM-DD') %></span>
+      <% if (page.categories && page.categories.length > 0) { %>
+      <span class="meta-item"><i class="fa-solid fa-bookmark fa-fw"></i> <%- page.categories.toArray().map(c => c.name).join(', ') %></span>
+      <% } %>
+      <% if (page.tags && page.tags.length > 0) { %>
+      <span class="meta-item"><i class="fa-solid fa-tags fa-fw"></i> <%- page.tags.toArray().map(t => t.name).join(', ') %></span>
+      <% } %>
+    </div>
+  </div>
+  <div class="post-content">
+    <%- page.content %>
+  </div>
+  <div class="post-nav">
+    <% if (page.prev) { %>
+    <a href="<%- url_for(page.prev.path) %>" class="post-nav-item prev">
+      <i class="fa-solid fa-arrow-left"></i> <%= page.prev.title %>
+    </a>
+    <% } %>
+    <% if (page.next) { %>
+    <a href="<%- url_for(page.next.path) %>" class="post-nav-item next">
+      <%= page.next.title %> <i class="fa-solid fa-arrow-right"></i>
+    </a>
+    <% } %>
+  </div>
+</article>

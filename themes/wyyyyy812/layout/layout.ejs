@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-TW" data-theme="light">
+<head>
+  <%- partial('_partial/head') %>
+</head>
+<body>
+  <% if (is_home()) { %>
+    <%- partial('_partial/banner') %>
+  <% } %>
+
+  <%- partial('_partial/sidebar') %>
+
+  <div id="nexmoe-content"<%= !is_home() ? ' class="page-content"' : '' %>>
+    <div class="nexmoe-primary">
+      <%- body %>
+    </div>
+  </div>
+
+  <footer id="footer">
+    <div id="footer-wrap">
+      <div>&copy; <%= date(Date.now(), 'YYYY') %> wyyyyy812 的小窩</div>
+    </div>
+  </footer>
+
+  <%- partial('_partial/scripts') %>
+</body>
+</html>
