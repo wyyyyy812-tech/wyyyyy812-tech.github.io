@@ -27,6 +27,59 @@
   }
 </script>
 
+<!-- Code Block Enhancement (reimu style) -->
+<div id="copy-tooltip"></div>
+<script>
+(function() {
+  // Wrap pre in scrollable area
+  document.querySelectorAll('figure.highlight pre').forEach(function(pre) {
+    if (!pre.parentNode.classList.contains('code-area') && !pre.parentNode.classList.contains('gutter')) {
+      var div = document.createElement('div');
+      div.className = 'code-area';
+      pre.parentNode.insertBefore(div, pre);
+      div.appendChild(pre);
+    }
+  });
+
+  // Insert header bar
+  document.querySelectorAll('figure.highlight').forEach(function(fig) {
+    if (fig.querySelector('.code-figcaption')) return;
+    var lang = fig.className.replace('highlight', '').trim().toUpperCase();
+    var header = document.createElement('div');
+    header.className = 'code-figcaption';
+    header.innerHTML =
+      '<div class="code-left-wrap"><div class="code-decoration"></div><div class="code-lang">' + lang + '</div></div>' +
+      '<div class="code-right-wrap"><button class="code-copy-btn" title="複製"><i class="fa-solid fa-copy"></i></button></div>';
+    fig.insertBefore(header, fig.firstChild);
+  });
+
+  // Copy functionality
+  document.querySelectorAll('.code-copy-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var fig = btn.closest('figure.highlight');
+      var code = fig.querySelector('td.code pre') || fig.querySelector('.code-area pre');
+      if (!code) return;
+      var text = code.textContent;
+      navigator.clipboard.writeText(text).then(function() {
+        btn.innerHTML = '<i class="fa-solid fa-check"></i>';
+        btn.classList.add('copied');
+        var tooltip = document.getElementById('copy-tooltip');
+        tooltip.textContent = '複製成功！';
+        tooltip.style.opacity = '1';
+        setTimeout(function() {
+          tooltip.style.opacity = '0';
+          btn.innerHTML = '<i class="fa-solid fa-copy"></i>';
+          btn.classList.remove('copied');
+        }, 1500);
+      });
+    });
+  });
+})();
+</script>
+
+<!-- Friend Marquee -->
+<%- js('js/friend-marquee') %>
+
 <!-- Live2D -->
 <script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
 

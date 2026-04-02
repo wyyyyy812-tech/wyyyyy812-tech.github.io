@@ -72,4 +72,6 @@ layout: page
 ## 聯絡方式
 
 - **GitHub**：[wyyyyy812-tech](https://github.com/wyyyyy812-tech)
+- **Instagram**：[wyy_yyy12](https://www.instagram.com/wyy_yyy12/)
+- **Discord**：[wy](http://discord.com/users/969803518464626688)
 - **Email**：（歡迎來信）
