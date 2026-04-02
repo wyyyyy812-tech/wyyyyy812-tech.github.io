@@ -98,6 +98,9 @@
       </div>
     </div>
 
+    <!-- TOC (only on post pages) -->
+    
+
     <div class="nexmoe-copyright">&copy; 2026 wy</div>
   </div>
 </div>
@@ -258,6 +261,34 @@
       });
     });
   });
+})();
+</script>
+
+<!-- TOC scroll highlight -->
+<script>
+(function() {
+  var tocLinks = document.querySelectorAll('.sidebar-toc a');
+  if (!tocLinks.length) return;
+
+  var headings = [];
+  tocLinks.forEach(function(link) {
+    var id = decodeURIComponent(link.getAttribute('href').replace('#', ''));
+    var el = document.getElementById(id);
+    if (el) headings.push({ el: el, link: link });
+  });
+
+  function updateActive() {
+    var scrollTop = window.scrollY + 100;
+    var active = null;
+    headings.forEach(function(h) {
+      if (h.el.offsetTop <= scrollTop) active = h;
+    });
+    tocLinks.forEach(function(l) { l.classList.remove('active'); });
+    if (active) active.link.classList.add('active');
+  }
+
+  window.addEventListener('scroll', updateActive);
+  updateActive();
 })();
 </script>
 
