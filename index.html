@@ -91,8 +91,10 @@
     <!-- Social Links -->
     <div class="nexmoe-widget-wrap">
       <div class="nexmoe-widget nexmoe-social">
-        <a href="https://github.com/wyyyyy812-tech" target="_blank" title="GitHub" style="color: #333; background-color: rgba(25,23,23,.15);"><i class="fa-brands fa-github"></i></a>
-        <a href="mailto:" target="_blank" title="Email" style="color: rgb(249,8,8); background-color: rgba(249,8,8,.1);"><i class="fa-solid fa-envelope"></i></a>
+        <a href="https://github.com/wyyyyy812-tech" target="_blank" title="GitHub" class="social-github"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.instagram.com/wyy_yyy12" target="_blank" title="Instagram" class="social-instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="http://discord.com/users/969803518464626688" target="_blank" title="Discord" class="social-discord"><i class="fa-brands fa-discord"></i></a>
+        <a href="mailto:" target="_blank" title="Email" class="social-email"><i class="fa-solid fa-envelope"></i></a>
       </div>
     </div>
 
@@ -176,7 +178,7 @@
 
   <footer id="footer">
     <div id="footer-wrap">
-      <div>&copy; 2026 wyyyyy812 的小窩</div>
+      <div>&copy; 2026 wy 的小窩</div>
     </div>
   </footer>
 
@@ -208,6 +210,61 @@
     (function animate(){if(particles.length>0){ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEach(p=>{p.update();p.draw();});particles=particles.filter(p=>p.life>0);if(particles.length===0)ctx.clearRect(0,0,canvas.width,canvas.height);}requestAnimationFrame(animate);})();
   }
 </script>
+
+<!-- Code Block Enhancement (reimu style) -->
+<div id="copy-tooltip"></div>
+<script>
+(function() {
+  // Wrap pre in scrollable area
+  document.querySelectorAll('figure.highlight pre').forEach(function(pre) {
+    if (!pre.parentNode.classList.contains('code-area') && !pre.parentNode.classList.contains('gutter')) {
+      var div = document.createElement('div');
+      div.className = 'code-area';
+      pre.parentNode.insertBefore(div, pre);
+      div.appendChild(pre);
+    }
+  });
+
+  // Insert header bar
+  document.querySelectorAll('figure.highlight').forEach(function(fig) {
+    if (fig.querySelector('.code-figcaption')) return;
+    var lang = fig.className.replace('highlight', '').trim().toUpperCase();
+    var header = document.createElement('div');
+    header.className = 'code-figcaption';
+    header.innerHTML =
+      '<div class="code-left-wrap"><div class="code-decoration"></div><div class="code-lang">' + lang + '</div></div>' +
+      '<div class="code-right-wrap"><button class="code-copy-btn" title="複製"><i class="fa-solid fa-copy"></i></button></div>';
+    fig.insertBefore(header, fig.firstChild);
+  });
+
+  // Copy functionality
+  document.querySelectorAll('.code-copy-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var fig = btn.closest('figure.highlight');
+      var code = fig.querySelector('td.code pre') || fig.querySelector('.code-area pre');
+      if (!code) return;
+      var text = code.textContent;
+      navigator.clipboard.writeText(text).then(function() {
+        btn.innerHTML = '<i class="fa-solid fa-check"></i>';
+        btn.classList.add('copied');
+        var tooltip = document.getElementById('copy-tooltip');
+        tooltip.textContent = '複製成功！';
+        tooltip.style.opacity = '1';
+        setTimeout(function() {
+          tooltip.style.opacity = '0';
+          btn.innerHTML = '<i class="fa-solid fa-copy"></i>';
+          btn.classList.remove('copied');
+        }, 1500);
+      });
+    });
+  });
+})();
+</script>
+
+<!-- Friend Marquee -->
+
+<script src="/js/friend-marquee.js"></script>
+
 
 <!-- Live2D -->
 <script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
