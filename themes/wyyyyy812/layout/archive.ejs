@@ -3,7 +3,38 @@
   <p>共 <%= site.posts.length %> 篇文章</p>
 </div>
 
+<% if (site.categories.length > 0) { %>
+<div class="archive-section" data-aos="fade-up">
+  <h2><i class="fa-solid fa-folder"></i> 分類</h2>
+  <div class="archive-tags">
+    <% site.categories.forEach(function(cat) { %>
+    <a href="<%- url_for(cat.path) %>" class="archive-tag-item">
+      <span><%= cat.name %></span>
+      <span class="tag-count"><%= cat.posts.length %></span>
+    </a>
+    <% }); %>
+  </div>
+</div>
+<% } %>
+
+<% if (site.tags.length > 0) { %>
+<div class="archive-section" data-aos="fade-up">
+  <h2><i class="fa-solid fa-tags"></i> 標籤</h2>
+  <div class="archive-tags">
+    <% site.tags.forEach(function(tag) { %>
+    <a href="<%- url_for(tag.path) %>" class="archive-tag-item">
+      <span><%= tag.name %></span>
+      <span class="tag-count"><%= tag.posts.length %></span>
+    </a>
+    <% }); %>
+  </div>
+</div>
+<% } %>
+
 <% if (site.posts.length > 0) { %>
+<div class="archive-section" data-aos="fade-up">
+  <h2><i class="fa-solid fa-clock-rotate-left"></i> 時間線</h2>
+</div>
 <div class="archive-timeline" data-aos="fade-up">
   <% var currentYear = ''; %>
   <% site.posts.sort('date', -1).forEach(function(post) { %>

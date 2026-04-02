@@ -1,0 +1,20 @@
+<div class="page-header" data-aos="fade-down">
+  <h1><i class="fa-solid fa-folder"></i> <%= page.category %></h1>
+  <p>共 <%= page.posts.length %> 篇文章</p>
+</div>
+
+<div class="nexmoe-posts">
+  <% page.posts.sort('date', -1).forEach(function(post, i) { %>
+  <div class="nexmoe-post" data-aos="fade-up" data-aos-delay="<%= i * 100 %>">
+    <a href="<%- url_for(post.path) %>">
+      <div class="nexmoe-post-cover" style="background: linear-gradient(135deg, <%= ['#667eea,#764ba2','#f093fb,#f5576c','#4facfe,#00f2fe','#43e97b,#38f9d7','#fa709a,#fee140'][i % 5] %>);">
+        <h1><%= post.title %></h1>
+      </div>
+    </a>
+    <div class="nexmoe-post-meta">
+      <span class="meta-item"><i class="fa-solid fa-calendar fa-fw"></i> <%= date(post.date, 'YYYY-MM-DD') %></span>
+    </div>
+    <article><p><%= strip_html(post.content).substring(0, 100) %>...</p></article>
+  </div>
+  <% }); %>
+</div>

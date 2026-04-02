@@ -36,7 +36,7 @@
       <div class="nexmoe-post-meta">
         <span class="meta-item"><i class="fa-solid fa-calendar fa-fw"></i> <%= date(post.date, 'YYYY-MM-DD') %></span>
         <% if (post.categories && post.categories.length > 0) { %>
-        <span class="meta-item"><i class="fa-solid fa-bookmark fa-fw"></i> <%- post.categories.toArray().map(c => c.name).join(', ') %></span>
+        <span class="meta-item"><i class="fa-solid fa-bookmark fa-fw"></i> <%- post.categories.toArray().map(c => '<a href="' + url_for(c.path) + '">' + c.name + '</a>').join(', ') %></span>
         <% } %>
       </div>
       <article><p><%= post.excerpt ? strip_html(post.excerpt).substring(0, 100) + '...' : strip_html(post.content).substring(0, 100) + '...' %></p></article>
