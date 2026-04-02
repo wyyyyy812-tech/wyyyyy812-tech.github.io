@@ -12,7 +12,7 @@ layout: page
 ```yml
 - name: wy
   url: https://wyyyyy812-tech.github.io/
-  desc: wy 的個人部落格
+  desc: 可愛小男娘一枚
   image: https://wyyyyy812-tech.github.io/images/avatar.jpg
 ```
 
