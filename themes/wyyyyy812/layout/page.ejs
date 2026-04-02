@@ -5,3 +5,31 @@
 <div class="page-body" data-aos="fade-up">
   <%- page.content %>
 </div>
+<% if (page.comments !== false) { %>
+<div class="post-comments" style="margin-top: 2rem;" data-aos="fade-up">
+  <script src="https://giscus.app/client.js"
+      data-repo="wyyyyy812-tech/wyyyyy812-tech.github.io"
+      data-repo-id="R_kgDOR3fMjA"
+      data-category="Announcements"
+      data-category-id="DIC_kwDOR3fMjM4C54N5"
+      data-mapping="pathname"
+      data-strict="1"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="bottom"
+      data-theme="preferred_color_scheme"
+      data-lang="zh-TW"
+      crossorigin="anonymous"
+      async>
+  </script>
+</div>
+<script>
+  const giscusPageObserver = new MutationObserver(function() {
+    const iframe = document.querySelector('iframe.giscus-frame');
+    if (!iframe) return;
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    iframe.contentWindow.postMessage({ giscus: { setConfig: { theme: theme } } }, 'https://giscus.app');
+  });
+  giscusPageObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+</script>
+<% } %>
