@@ -78,7 +78,7 @@ a:hover { opacity: 0.8; }
 #home-background {
   position: absolute;
   inset: 0;
-  background-image: url('../images/banner-light.jpg');
+  background-image: url('../images/banner-light.webp');
   background-size: cover;
   background-position: center;
   z-index: 0;
@@ -86,7 +86,7 @@ a:hover { opacity: 0.8; }
 }
 
 [data-theme="dark"] #home-background {
-  background-image: url('../images/banner-dark.jpg');
+  background-image: url('../images/banner-dark.webp');
 }
 
 #home-background::before {
